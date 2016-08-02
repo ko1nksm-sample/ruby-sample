@@ -9,6 +9,13 @@ browserify-rails + babel のサンプル
 * その際にbebelを通してES6対応をし
 * jasmine-railsを使ってテストを行う
 
+**webpackを使用しなかった理由**
+
+webpackだとRailsとの連携部分を独自で作りこむ必要があり大変そうだったから。
+（将来Railsが標準で対応したりベストプラクティスが作られることに期待）
+
+フロントエンドにReactを使ったりgulpを導入して、Railsと分離したい場合はwebpackの方が良さそう。
+
 
 ## 作成手順
 
