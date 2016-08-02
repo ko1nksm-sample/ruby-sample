@@ -89,13 +89,12 @@ config.browserify_rails.commandline_options = '-t babelify --extension=.es6 --pl
 
 **解説**
 
-* JavaScriptファイルは拡張子.js、モジュールは拡張子.es6で作成するものとする。
+* 通常のJavaScriptファイルは拡張子.js、モジュールは拡張子.es6で作成するものとする。
 * 拡張子.jsのファイルはAsset pipelineによって結合される。
 * 拡張子.es6のファイルはbrowserify-railsによって結合される。
-
-* ファイルの中にimportまたはmodule.exportsが含まれているとbrowserify+babelifyされる。
-+ ただしexport文を使用してコードを書くとmodule.exportsを使用しないので拡張子es6をモジュールとして認識させる (--extension=.es6)
-* さらにtransform-es2015-modules-commonjsによってcommonjs形式のモジュールに変換する。
+* ファイルの中にimportまたはmodule.exportsという文字列が含まれているとbrowserify-railsによってbrowserifyされる。
++ しかしexport文を使用してコードを書くとmodule.exportsという文字列が含まれないので拡張子.es6をモジュールとして認識させる (--extension=.es6)
+* さらにtransform-es2015-modules-commonjsによってcommonjs形式のモジュールに変換することで作成したモジュールをimportできるようになる。
 
 ### テスト
 
