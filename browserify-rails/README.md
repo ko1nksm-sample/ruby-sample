@@ -46,11 +46,10 @@ app/assets/javascripts/hello.js を適当に作成してJavaScriptが動くこ�
 
 ### browserify-rails
 
-gemに以下を追加する
+Gemfileに以下を追加して`bundle`を実行する
 
 ```
 gem "browserify-rails"
-bundle
 ```
 
 `package.json`を作成
@@ -91,3 +90,44 @@ config.browserify_rails.commandline_options = '-t babelify --extension=.es6 --pl
 * ファイルの中にimportまたはmodule.exportsが含まれているとbrowserify+babelifyされる。
 + ただしexport文を使用してコードを書くとmodule.exportsを使用しないので拡張子es6をモジュールとして認識させる (--extension=.es6)
 * さらにtransform-es2015-modules-commonjsによってcommonjs形式のモジュールに変換する。
+
+### テスト
+
+Gemfileに以下を追加して`bundle`を実行する
+
+```
+group :development, :test do
+  gem 'jasmine-rails'
+end
+```
+
+jasmine_railsをインストールする
+
+```
+bin/rails g jasmine_rails:install
+```
+
+テストコードを書く
+
+spec/javascripts/hello_spec.jp
+
+```
+function add(a, b) {
+      return a + b;
+}
+
+describe('add 関数のテスト', function() {
+    it('1 + 1 は 2', function() {
+        expect(add(1, 1)).toBe(2);
+    });
+    it('1 + 4 は 5', function() {
+        expect(add(1, 4)).toBe(5);
+    });
+});
+```
+
+テスト実行
+
+```
+bin/rake spec:javascript
+```
