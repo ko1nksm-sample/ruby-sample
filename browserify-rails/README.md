@@ -50,5 +50,44 @@ gemに以下を追加する
 
 ```
 gem "browserify-rails"
-bundle install
+bundle
 ```
+
+`package.json`を作成
+
+```
+{
+  "name": "browserify-rails",
+  "private": true
+}
+```
+
+```
+npm install browserify browserify-incremental --save
+npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-commonjs --save-dev
+```
+
+`.babelrc`を作成
+
+```
+{
+  "presets": ["es2015"],
+  "plugins": ["transform-es2015-modules-commonjs"]
+}
+```
+
+`config/application.rb`に以下を追加
+
+```
+config.browserify_rails.commandline_options = '-t babelify --extension=.es6 --plugins transform-es2015-modules-commonjs'
+```
+
+**解説**
+
+* JavaScriptファイルは拡張子.js、モジュールは拡張子.es6で作成するものとする。
+* 拡張子.jsのファイルはAsset pipelineによって結合される。
+* 拡張子.es6のファイルはbrowserify-railsによって結合される。
+
+* ファイルの中にimportまたはmodule.exportsが含まれているとbrowserify+babelifyされる。
++ ただしexport文を使用してコードを書くとmodule.exportsを使用しないので拡張子es6をモジュールとして認識させる (--extension=.es6)
+* さらにtransform-es2015-modules-commonjsによってcommonjs形式のモジュールに変換する。

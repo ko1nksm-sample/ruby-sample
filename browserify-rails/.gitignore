@@ -21,4 +21,6 @@
 .byebug_history
 
 /vendor/bundle
+/node_modules
+/public/assets
 
