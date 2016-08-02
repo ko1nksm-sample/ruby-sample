@@ -14,9 +14,7 @@ browserify-rails + babel のサンプル
 
 ### 前提
 
-* rbenvのインストール
-* ndenvのインストール
-
+bundleとnpmを使えるようにしておくこと
 
 ### rails
 
