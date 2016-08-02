@@ -47,3 +47,7 @@ end
 
 gem "browserify-rails"
 
+group :development, :test do
+  gem 'jasmine-rails'
+end
+
