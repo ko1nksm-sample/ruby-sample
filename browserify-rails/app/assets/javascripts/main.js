@@ -1,3 +1,7 @@
 import hello from 'hello'
 
-console.log('main:' + hello());
+let func = () => {
+  console.log('main: ' + hello());
+}
+
+func();
