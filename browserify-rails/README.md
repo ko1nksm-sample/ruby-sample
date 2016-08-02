@@ -2,6 +2,14 @@
 
 browserify-rails + babel のサンプル
 
+## 概要
+
+* railsと連携し
+* browserifyでnodeモジュールを使えるようにし
+* その際にbebelを通してES6対応をし
+* jasmine-railsを使ってテストを行う
+
+
 ## 作成手順
 
 ### 前提
@@ -109,7 +117,7 @@ bin/rails g jasmine_rails:install
 
 テストコードを書く
 
-spec/javascripts/hello_spec.jp
+spec/javascripts/hello_spec.js
 
 ```
 function add(a, b) {
@@ -177,3 +185,13 @@ describe('add 関数のテスト', function() {
     });
 });
 ```
+
+テスト実行
+
+```
+bin/rake spec:javascript
+```
+
+## 注意点
+
+browserifyやbabelの設定を変えた後は`bin/rake tmp:cache:clear`を行わないとキャッシュが使われてハマる
