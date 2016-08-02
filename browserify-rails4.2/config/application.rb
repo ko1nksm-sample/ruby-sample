@@ -24,5 +24,6 @@ module BrowserifyRails42
     config.active_record.raise_in_transactional_callbacks = true
 
     config.browserify_rails.commandline_options = '-t babelify --extension=.es6 --plugins transform-es2015-modules-commonjs'
+    config.browserify_rails.paths << -> (p) { p.start_with?(Rails.root.join("spec/javascripts").to_s) }
   end
 end
