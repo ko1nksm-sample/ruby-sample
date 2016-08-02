@@ -131,3 +131,49 @@ describe('add 関数のテスト', function() {
 ```
 bin/rake spec:javascript
 ```
+
+#### browserify-railsとテスト連携
+
+
+spec/javascripts/support/jasmine.yml から application.js の実行を取り除く
+（モジュール単位でテストするので不要）
+
+```
+src_files:
+#  - "application.{js.coffee,js,coffee}"
+```
+
+
+`config/application.rb`に以下を追加
+（テストコードをbrowserifyするため）
+
+```
+config.browserify_rails.paths << -> (p) { p.start_with?(Rails.root.join("spec/javascripts").to_s) }
+```
+
+
+
+テストコード修正
+
+spec/javascripts/hello_spec.jp
+
+```
+import hello from 'hello'
+
+function add(a, b) {
+      return a + b;
+}
+
+describe('add 関数のテスト', function() {
+    it('hello', function() {
+        expect(hello()).toBe("hello");
+    });
+
+    it('1 + 1 は 2', function() {
+        expect(add(1, 1)).toBe(2);
+    });
+    it('1 + 4 は 5', function() {
+        expect(add(1, 4)).toBe(5);
+    });
+});
+```
