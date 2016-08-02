@@ -1,3 +1,3 @@
 export default function hello() {
-  alert('hello');
+  return 'hello';
 }
