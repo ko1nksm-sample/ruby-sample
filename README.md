@@ -1,8 +1,3 @@
-*rails-sample*
+Ruby関連のサンプル
 
-- http://guides.rubyonrails.org/getting_started.html
-
-```
-bin/rails server -b 0.0.0.0
-```
-
+作りかけだったり不具合があったりするかもしれない。
