@@ -166,3 +166,39 @@ describe('add 関数のテスト', function() {
 ```
 NODE_PATH=app/assets/javascripts $(npm bin)/babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine-node/bin/jasmine-node -- spec/javascripts
 ```
+
+#### 簡略化
+
+テストの実行を簡単にするためのスクリプトを作成する
+
+
+package.jsonに以下を追加する
+
+```
+  "scripts": {
+    "test": ". .npmrunrc; $BABEL_NODE $JASMINE_NODE spec/javascripts",
+    "test-cov": ". .npmrunrc; $BABEL_NODE $ISPARTA cover --report text --report html $JASMINE_NODE -- spec/javascripts"
+  }
+```
+
+.npmrunrc package.jsonのscriptから読み込むファイル
+
+```
+NODE_PATH=app/assets/javascripts
+BABEL_NODE=$(npm bin)/babel-node
+ISPARTA=$(npm bin)/isparta
+JASMINE_NODE=$(npm bin)/$(readlink $(npm bin)/jasmine-node)
+```
+
+
+テストのみの実行
+
+```
+npm run test
+```
+
+テスト＋カバレッジの実行
+
+```
+npm run test-cov
+```

@@ -12,5 +12,9 @@
     "babelify": "^7.3.0",
     "isparta": "^4.0.0",
     "jasmine-node": "^1.14.5"
+  },
+  "scripts": {
+    "test": ". .npmrunrc; $BABEL_NODE $JASMINE_NODE spec/javascripts",
+    "test-cov": ". .npmrunrc; $BABEL_NODE $ISPARTA cover --report text --report html $JASMINE_NODE -- spec/javascripts"
   }
 }
