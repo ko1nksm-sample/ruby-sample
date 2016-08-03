@@ -81,7 +81,7 @@ npm install browserify browserify-incremental --save
 npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-commonjs --save-dev
 ```
 
-`.babelrc`を作成
+.babelrcを作成
 
 ```
 {
@@ -90,13 +90,21 @@ npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-c
 }
 ```
 
-`config/application.rb`に以下を追加
+config/application.rbに以下を追加
 
 ```
-config.browserify_rails.commandline_options = '-t babelify --extension=.es6 --plugins transform-es2015-modules-commonjs'
+config.browserify_rails.commandline_options = '-t babelify --plugins transform-es2015-modules-commonjs'
 ```
 
-`app/assets/javascripts/main.js`に以下を記述
+assets/javascripts/application.jsを修正してすべてのjsファイルではなく読み込みたいファイルのみを記述する
+
+```
+// require_tree .
+//= require main.js
+```
+
+
+app/assets/javascripts/main.jsに以下を記述
 
 ```
 import hello from 'hello'
@@ -108,7 +116,7 @@ let func = () => {
 func();
 ```
 
-`app/assets/javascripts/hello.es6`に以下を記述
+app/assets/javascripts/hello.jsに以下を記述
 
 ```
 export default function hello() {
@@ -116,85 +124,19 @@ export default function hello() {
 }
 ```
 
-`app/assets/javascripts/hello.js`は削除
-
 **注意点**
 
 browserifyやbabelの設定を変えた後は`bin/rake tmp:cache:clear`を行わないとキャッシュが使われてprecompileでハマる
 
+### テスト＋カバレッジ
 
-**解説**
-
-* 通常のJavaScriptファイルは拡張子.js、モジュールは拡張子.es6で作成するものとする。
-* 拡張子.jsのファイルはAsset pipelineによって結合される。
-* 拡張子.es6のファイルはbrowserify-railsによって結合される。
-* ファイルの中にimportまたはmodule.exportsという文字列が含まれているとbrowserify-railsによってbrowserifyされる。
-+ しかしexport文を使用してコードを書くとmodule.exportsという文字列が含まれないので拡張子.es6をモジュールとして認識させる (--extension=.es6)
-* さらにtransform-es2015-modules-commonjsによってcommonjs形式のモジュールに変換することで作成したモジュールをimportできるようになる。
-
-### テスト
-
-Gemfileに以下を追加して`bundle`を実行する
+JavaScriptのテストはRailsとは完全に独立させる
 
 ```
-group :development, :test do
-  gem 'jasmine-rails'
-end
-```
-
-jasmine_railsをインストールする
-
-```
-bin/rails g jasmine_rails:install
+npm install --save-dev bebel-cli jasmine-node isparta
 ```
 
 テストコードを書く
-
-spec/javascripts/hello_spec.js
-
-```
-function add(a, b) {
-      return a + b;
-}
-
-describe('add 関数のテスト', function() {
-    it('1 + 1 は 2', function() {
-        expect(add(1, 1)).toBe(2);
-    });
-    it('1 + 4 は 5', function() {
-        expect(add(1, 4)).toBe(5);
-    });
-});
-```
-
-テスト実行
-
-```
-bin/rake spec:javascript
-```
-
-#### browserify-railsとテスト連携
-
-
-spec/javascripts/support/jasmine.yml から application.js の実行を取り除く
-（モジュール単位でテストするので不要）
-
-```
-src_files:
-#  - "application.{js.coffee,js,coffee}"
-```
-
-
-`config/application.rb`に以下を追加
-（テストコードをbrowserifyするため）
-
-```
-config.browserify_rails.paths << -> (p) { p.start_with?(Rails.root.join("spec/javascripts").to_s) }
-```
-
-
-
-テストコード修正
 
 spec/javascripts/hello_spec.js
 
@@ -222,9 +164,5 @@ describe('add 関数のテスト', function() {
 テスト実行
 
 ```
-bin/rake spec:javascript
+NODE_PATH=app/assets/javascripts $(npm bin)/babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine-node/bin/jasmine-node -- spec/javascripts
 ```
-
-## 注意点
-
-browserifyやbabelの設定を変えた後は`bin/rake tmp:cache:clear`を行わないとキャッシュが使われてハマる
