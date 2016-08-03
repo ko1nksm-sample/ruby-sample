@@ -1,8 +1,7 @@
-import hello from 'hello'
+import hello from "hello";
 
-let func = () => {
-    console.log('main: ' + hello());
-}
+const func = () => {
+    console.log("main: " + hello());
+};
 
 func();
-
