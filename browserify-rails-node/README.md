@@ -96,6 +96,33 @@ npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-c
 config.browserify_rails.commandline_options = '-t babelify --extension=.es6 --plugins transform-es2015-modules-commonjs'
 ```
 
+`app/assets/javascripts/main.js`に以下を記述
+
+```
+import hello from 'hello'
+
+let func = () => {
+  console.log('main: ' + hello());
+}
+
+func();
+```
+
+`app/assets/javascripts/hello.es6`に以下を記述
+
+```
+export default function hello() {
+  return 'hello';
+}
+```
+
+`app/assets/javascripts/hello.js`は削除
+
+**注意点**
+
+browserifyやbabelの設定を変えた後は`bin/rake tmp:cache:clear`を行わないとキャッシュが使われてprecompileでハマる
+
+
 **解説**
 
 * 通常のJavaScriptファイルは拡張子.js、モジュールは拡張子.es6で作成するものとする。
