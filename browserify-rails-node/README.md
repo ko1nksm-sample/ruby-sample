@@ -46,15 +46,17 @@ bundle exec rails new .
 
 #### テスト用コントローラ作成
 
+app/assets/javascripts/hello.js を適当に作成してJavaScriptが動くことを確認する。
+（なおhello.coffee）は削除する
+
 ```
 bin/rails g controller hello index
+echo 'alert("hello")' > app/assets/javascripts/hello.js
+rm app/assets/javascripts/hello.coffee
 bin/rails s
 ```
 
 http://localhost:3000/hello/index でアクセスできる
-
-app/assets/javascripts/hello.js を適当に作成してJavaScriptが動くことを確認する。
-（なおhello.coffee）は削除する
 
 
 ### browserify-rails
