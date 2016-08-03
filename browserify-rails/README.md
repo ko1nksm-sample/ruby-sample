@@ -84,7 +84,6 @@ npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-c
 ```
 {
   "presets": ["es2015"],
-  "plugins": ["transform-es2015-modules-commonjs"]
 }
 ```
 
@@ -167,7 +166,7 @@ config.browserify_rails.paths << -> (p) { p.start_with?(Rails.root.join("spec/ja
 
 テストコード修正
 
-spec/javascripts/hello_spec.jp
+spec/javascripts/hello_spec.js
 
 ```
 import hello from 'hello'
