@@ -132,6 +132,12 @@ export default function hello() {
 
 ### テスト
 
+phantomjsをインストールしておく
+
+```
+brew install phantomjs
+```
+
 Gemfileに以下を追加して`bundle`を実行する
 
 ```
@@ -140,11 +146,22 @@ group :development, :test do
 end
 ```
 
-jasmine_railsをインストールする
+teaspoonインストール
 
 ```
-bin/rails g jasmine_rails:install
+bin/rails generate teaspoon:install
 ```
+
+
+teaspoonにブラウザからアクセス
+
+```
+bin/rails s
+```
+
+http://localhost:3000/teaspoon を開く
+
+
 
 テストコードを書く
 
@@ -165,31 +182,30 @@ describe('add 関数のテスト', function() {
 });
 ```
 
+`spec/javascripts/support/spec_helper.js` から `//=require application` をコメントアウトする
+（モジュール単位でテストするので不要）
+
+```
+// require application
+```
+
 テスト実行
 
 ```
-bin/rake spec:javascript
+bundle exec rake teaspoon
 ```
+
+※ `bin/rake` だとエラーになるので注意
+
 
 #### browserify-railsとテスト連携
 
 
-spec/javascripts/support/jasmine.yml から application.js の実行を取り除く
-（モジュール単位でテストするので不要）
-
-```
-src_files:
-#  - "application.{js.coffee,js,coffee}"
-```
-
-
-`config/application.rb`に以下を追加
-（テストコードをbrowserifyするため）
+`config/application.rb`に以下を追加（テストコードをbrowserifyするため）
 
 ```
 config.browserify_rails.paths << -> (p) { p.start_with?(Rails.root.join("spec/javascripts").to_s) }
 ```
-
 
 
 テストコード修正
@@ -220,7 +236,7 @@ describe('add 関数のテスト', function() {
 テスト実行
 
 ```
-bin/rake spec:javascript
+bundle exec rake teaspoon
 ```
 
 ## 注意点
