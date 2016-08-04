@@ -1,5 +1,0 @@
-NODE_PATH=app/assets/javascripts
-BABEL_NODE=$(npm bin)/babel-node
-ISPARTA=$(npm bin)/isparta
-JASMINE_NODE=$(npm bin)/$(readlink $(npm bin)/jasmine-node)
-ESLINT=$(npm bin)/eslint
