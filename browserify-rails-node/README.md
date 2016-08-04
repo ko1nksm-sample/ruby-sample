@@ -47,7 +47,7 @@ bundle exec rails new .
 #### テスト用コントローラ作成
 
 app/assets/javascripts/hello.js を適当に作成してJavaScriptが動くことを確認する。
-（なおhello.coffee）は削除する
+なおhello.coffeeは削除する。
 
 ```
 bin/rails g controller hello index
@@ -177,7 +177,7 @@ describe('add 関数のテスト', function() {
 テスト実行
 
 ```
-NODE_PATH=app/assets/javascripts $(npm bin)/babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine/bin/jasmine.js
+$(npm bin)/babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine/bin/jasmine.js
 ```
 
 #### ESLint
