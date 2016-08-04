@@ -78,7 +78,7 @@ gem "browserify-rails"
 
 ```
 npm install browserify browserify-incremental --save
-npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-commonjs --save-dev
+npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-commonjs babel-plugin-resolver --save-dev
 ```
 
 .babelrcを作成
@@ -86,7 +86,10 @@ npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-c
 ```
 {
   "presets": ["es2015"],
-  "plugins": ["transform-es2015-modules-commonjs"]
+  "plugins": [
+    "transform-es2015-modules-commonjs",
+    ["resolver", { "resolveDirs": ["app/assets/javascripts"] }]
+  ]
 }
 ```
 
@@ -133,7 +136,19 @@ browserifyやbabelの設定を変えた後は`bin/rake tmp:cache:clear`を行わ
 JavaScriptのテストはRailsとは完全に独立させる
 
 ```
-npm install --save-dev bebel-cli jasmine-node isparta
+npm install --save-dev bebel-cli jasmine isparta
+```
+
+jasmineの設定ファイル生成
+
+```
+$(npm bin)/jasmine init
+```
+
+spec/support/jasmine.jsonのspec_dirを書き換える
+
+```
+  "spec_dir": "spec/javascripts",
 ```
 
 テストコードを書く
@@ -164,7 +179,7 @@ describe('add 関数のテスト', function() {
 テスト実行
 
 ```
-NODE_PATH=app/assets/javascripts $(npm bin)/babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine-node/bin/jasmine-node -- spec/javascripts
+NODE_PATH=app/assets/javascripts $(npm bin)/babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine/bin/jasmine.js
 ```
 
 #### 簡略化
@@ -177,11 +192,12 @@ package.jsonに以下を追加する
 ```
   "scripts": {
     "eslint": "eslint app/assets/javascripts",
-    "test": "babel-node $(npm bin)/jasmine-node spec/javascripts",
-    "test-cov": "babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine-node/bin/jasmine-node -- spec/javascripts"
+    "test": "babel-node $(npm bin)/jasmine",
+    "test-cov": "babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine/bin/jasmine.js"
   }
 ```
 
+コマンド
 
 ```
 npm run eslint
