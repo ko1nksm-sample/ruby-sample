@@ -35,4 +35,6 @@ browserify-railsを使ってRailsとフロントエンドを連携させてい�
 
 テストにはjasmine、カバレッジにはispara（istanbulのes6対応ラッパー）を使用している。
 
+eslintにも対応
+
 比較的良好に動いている。
