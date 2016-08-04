@@ -182,6 +182,24 @@ describe('add 関数のテスト', function() {
 NODE_PATH=app/assets/javascripts $(npm bin)/babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine/bin/jasmine.js
 ```
 
+#### ESLint
+
+ついでにESLintもインストールする
+
+```
+npm install --save-dev eslint
+```
+
+```
+$(npm bin)/eslint --init
+```
+
+適当に.eslintrcファイルを作成する。
+
+```
+$(npm bin)/eslint app/assets/javascripts
+```
+
 #### 簡略化
 
 テストの実行を簡単にするためのスクリプトを作成する
