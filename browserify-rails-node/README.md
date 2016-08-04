@@ -71,14 +71,13 @@ gem "browserify-rails"
 
 ```
 {
-  "name": "browserify-rails",
+  "name": "browserify-rails-node",
   "private": true
 }
 ```
 
 ```
-npm install browserify browserify-incremental --save
-npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-commonjs babel-plugin-resolver --save-dev
+npm install browserify browserify-incremental babelify babel-preset-es2015 babel-plugin-resolver --save-dev
 ```
 
 .babelrcを作成
@@ -96,7 +95,7 @@ npm install babelify babel-preset-es2015 babel-plugin-transform-es2015-modules-c
 config/application.rbに以下を追加
 
 ```
-config.browserify_rails.commandline_options = '-t babelify --plugins transform-es2015-modules-commonjs'
+config.browserify_rails.commandline_options = '-t babelify'
 ```
 
 assets/javascripts/application.jsを修正してすべてのjsファイルではなく読み込みたいファイルのみを記述する
