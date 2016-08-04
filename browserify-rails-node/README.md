@@ -86,7 +86,6 @@ npm install browserify browserify-incremental babelify babel-preset-es2015 babel
 {
   "presets": ["es2015"],
   "plugins": [
-    "transform-es2015-modules-commonjs",
     ["resolver", { "resolveDirs": ["app/assets/javascripts"] }]
   ]
 }
