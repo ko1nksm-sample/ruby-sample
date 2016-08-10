@@ -1,0 +1,11 @@
+<h1>注文作成</h1>
+
+<%= form_for :order, url: orders_path do |f| %>
+<dl>
+  <dt><%= f.label :name, "名前" %></dt>
+  <dd><%= f.text_field :name %></dd>
+  <dt><%= f.label :address, "住所" %></dt>
+  <dd><%= f.text_field :address %></dd>
+</dl>
+<%= f.submit %>
+<% end %>

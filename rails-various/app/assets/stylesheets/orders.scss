@@ -26,11 +26,12 @@ dd {
  width:200px;
  margin-left:50px;
  padding:5px 5px 5px 10px;
+
+ input {
+   width: 100%;
+ }
 }
 
-input {
-  width: 100%;
-}
 
 #source {
   margin-top: 10em;
