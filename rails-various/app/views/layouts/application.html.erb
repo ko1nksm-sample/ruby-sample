@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <main>
     <%= yield %>
+    </main>
+    <pre id="source"></pre>
+    <script>
+      $('#source').text($('main').html().trim());
+    </script>
   </body>
 </html>
