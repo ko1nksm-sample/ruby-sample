@@ -1,9 +1,14 @@
 <h1>注文一覧</h1>
 
 <table>
-  <tr><td>番号<td>名前<td>住所</tr>
+  <tr><td>番号<td>名前<td>住所<td>操作</tr>
   <% @orders.each do |order| %>
-  <tr><td><%= link_to order.id, order %><td><%= order.name %><td><%= order.address %></tr>
+  <tr>
+    <td><%= link_to order.id, order %>
+    <td><%= order.name %>
+    <td><%= order.address %>
+    <td><%= link_to "削除", order, method: :delete, data: {confirm: "本当に削除しますか？"} %>
+  </tr>
   <% end %>
 </table>
 
