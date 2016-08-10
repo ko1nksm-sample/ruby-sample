@@ -3,6 +3,6 @@
 <table>
   <tr><td>番号<td>名前<td>住所</tr>
   <% @orders.each do |order| %>
-  <tr><td><%= order.id %><td><%= order.name %><td><%= order.address %></tr>
+  <tr><td><%= link_to order.id, order %><td><%= order.name %><td><%= order.address %></tr>
   <% end %>
 </table>
