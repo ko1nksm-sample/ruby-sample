@@ -14,9 +14,16 @@
     <main>
     <%= yield %>
     </main>
+    <button id="refresh">refresh</button>
     <pre id="source"></pre>
     <script>
-      $('#source').text($('main').html().trim());
+      function refresh() {
+        $('#source').text($('main').html().trim());
+      }
+      refresh();
+      $('#refresh').on('click', function() {
+        refresh();
+      })
     </script>
   </body>
 </html>
