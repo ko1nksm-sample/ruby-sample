@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20160810060150) do
 
-  create_table "details", force: :cascade do |t|
+  create_table "details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order_id"
     t.string   "product"
     t.integer  "quantity"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160810060150) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "address"
     t.datetime "created_at", null: false

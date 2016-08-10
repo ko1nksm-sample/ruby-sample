@@ -1,2 +1,3 @@
 class Detail < ApplicationRecord
+  belongs_to :order
 end
