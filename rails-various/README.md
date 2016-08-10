@@ -67,8 +67,13 @@ bin/rake db:seed
 
 ### アプリ作成
 
-* orders#index の作成
-* orders#show の作成
+* 基本機能
+  * orders#index の作成
+  * orders#show の作成
+  * orders#new, orders#create の作成
+  * orders#edit, orders#update の作成
+  * orders#destroy の作成
+
 
 ## その他
 
