@@ -1,2 +1,8 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<h1>注文一覧</h1>
+
+<table>
+  <tr><td>番号<td>名前<td>住所</tr>
+  <% @orders.each do |order| %>
+  <tr><td><%= order.id %><td><%= order.name %><td><%= order.address %></tr>
+  <% end %>
+</table>

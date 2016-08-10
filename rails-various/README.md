@@ -65,6 +65,10 @@ bin/rake db:seed
 ```
 
 
+### アプリ作成
+
+* orders#index の作成
+
 ## その他
 
 ### コマンドいろいろ
