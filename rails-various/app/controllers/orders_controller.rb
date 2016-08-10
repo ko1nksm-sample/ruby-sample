@@ -13,8 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = Order.find(params[:id])
-    @order.destroy
+    Order.destroy(params[:id])
     redirect_to orders_url
   end
 
