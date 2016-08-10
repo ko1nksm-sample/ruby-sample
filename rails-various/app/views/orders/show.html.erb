@@ -7,4 +7,15 @@
   <dd><%= @order.address %></dd>
 </dl>
 
+<table>
+  <tr><td>商品<td>個数</tr>
+  <% @order.details.each do |detail| %>
+  <tr>
+    <td><%= detail.product %></td>
+    <td><%= detail.quantity %></td>
+  </tr>
+  <% end %>
+</table>
+
+
 <%= link_to '注文一覧', orders_path %>

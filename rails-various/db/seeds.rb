@@ -8,7 +8,7 @@
 
 order = Order.create(:name => 'name1', :address => 'address1')
 Detail.create(:order => order, :product => 'product1', :quantity => 1)
-Detail.create(:order => order, :product => 'product1', :quantity => 1)
-Detail.create(:order => order, :product => 'product1', :quantity => 1)
+Detail.create(:order => order, :product => 'product2', :quantity => 2)
+Detail.create(:order => order, :product => 'product3', :quantity => 3)
 Order.create(:name => 'name2', :address => 'address2')
 Order.create(:name => 'name3', :address => 'address3')
