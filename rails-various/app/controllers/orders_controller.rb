@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.details.build
   end
 
   def show
@@ -24,8 +25,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(order_params)
-    redirect_to @order
+    @order = Order.new(order_params)
+    if @order.save
+      redirect_to @order
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -35,7 +40,7 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:name, :address)
+      params.require(:order).permit(:name, :address, :details_attributes => [:id, :product, :quantity])
     end
 
     def set_order

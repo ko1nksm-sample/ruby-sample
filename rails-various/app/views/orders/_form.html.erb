@@ -1,3 +1,13 @@
+<% if order.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for(order) do |f| %>
 <dl>
   <dt><%= f.label :name, "名前" %></dt>
@@ -7,9 +17,10 @@
 </dl>
 
 <table>
-  <tr><td>商品<td>個数</tr>
+  <tr><td>ID<td>商品<td>個数</tr>
   <%= f.fields_for(:details) do |detail| %>
   <tr>
+    <td><%= detail.hidden_field :id %><%= detail.object.id %></td>
     <td><%= detail.text_field :product %></td>
     <td><%= detail.text_field :quantity %></td>
   </tr>
