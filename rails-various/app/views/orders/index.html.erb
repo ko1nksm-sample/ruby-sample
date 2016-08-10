@@ -4,10 +4,13 @@
   <tr><td>番号<td>名前<td>住所<td>操作</tr>
   <% @orders.each do |order| %>
   <tr>
-    <td><%= link_to order.id, order %>
-    <td><%= order.name %>
-    <td><%= order.address %>
-    <td><%= link_to "削除", order, method: :delete, data: {confirm: "本当に削除しますか？"} %>
+    <td><%= link_to order.id, order %></td>
+    <td><%= order.name %></td>
+    <td><%= order.address %></td>
+    <td>
+      <%= link_to "編集", [:edit, order] %>
+      <%= link_to "削除", order, method: :delete, data: {confirm: "本当に削除しますか？"} %>
+    </td>
   </tr>
   <% end %>
 </table>
