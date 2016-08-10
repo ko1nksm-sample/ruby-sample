@@ -46,7 +46,7 @@ bin/rake db:create
 モデル作成
 
 ```
-bin/rails g model order name:string address:string
+bin/rails g model Order name:string address:string
 ```
 
 ※モデルは単数形で作成すること
@@ -65,14 +65,22 @@ bin/rake db:seed
 ```
 
 
-### アプリ作成
+### 注文機能作成
 
-* 基本機能
-  * orders#index の作成
-  * orders#show の作成
-  * orders#new, orders#create の作成
-  * orders#edit, orders#update の作成
-  * orders#destroy の作成
+* orders#index の作成
+* orders#show の作成
+* orders#new, orders#create の作成
+* orders#edit, orders#update の作成
+* orders#destroy の作成
+
+### 注文明細作成
+
+モデル作成
+
+```
+bin/rails g model Detail order_id:integer product:string quantity:integer
+bin/rake db:migrate
+```
 
 
 ## その他
