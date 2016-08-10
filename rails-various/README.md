@@ -46,8 +46,24 @@ bin/rake db:create
 モデル作成
 
 ```
-rails g model order name:string address:string
+bin/rails g model order name:string address:string
 ```
+
+※モデルは単数形で作成すること
+
+
+マイグレート
+
+```
+bin/rake db:migrate
+```
+
+データ投入
+
+```
+bin/rake db:seed
+```
+
 
 ## その他
 
