@@ -106,3 +106,9 @@ bin/rake --tasks
 ```
 bin/rake routes
 ```
+
+### 参考
+
+* [1対多の関係で同時に作成/更新する](http://pistachio0416.hatenablog.com/entry/2015/02/16/1%E5%AF%BE%E5%A4%9A%E3%81%AE%E9%96%A2%E4%BF%82%E3%81%A7%E5%90%8C%E6%99%82%E3%81%AB%E4%BD%9C%E6%88%90/%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B)
+* [Railsでaccepts_nested_attributes_forとfields_forを使ってhas_many関連の子レコードを作成/更新するフォームを作成](http://ruby-rails.hatenadiary.com/entry/20141208/1418018874)
+

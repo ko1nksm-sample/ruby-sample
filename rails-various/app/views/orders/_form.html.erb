@@ -17,12 +17,13 @@
 </dl>
 
 <table>
-  <tr><td>ID<td>商品<td>個数</tr>
+  <tr><td>ID<td>商品<td>個数<td>削除</tr>
   <%= f.fields_for(:details) do |detail| %>
   <tr>
     <td><%= detail.hidden_field :id %><%= detail.object.id %></td>
     <td><%= detail.text_field :product %></td>
     <td><%= detail.text_field :quantity %></td>
+    <td><%= detail.check_box :_destroy %></td>
   </tr>
   <% end %>
 </table>
