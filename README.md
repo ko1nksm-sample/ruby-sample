@@ -2,10 +2,18 @@
 
 作りかけだったり不具合があったりするかもしれない。
 
-## rails
+## rails-scaffold
 
-railsのサンプル
+scaffold生成コード
 
+```
+rails new rails-scaffold
+rails generate scaffold user name:string age:integer
+```
+
+## rails-blog
+
+railsブログのサンプル
 
 ## browserify-rails-jasmine
 
