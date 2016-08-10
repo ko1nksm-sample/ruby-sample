@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:show, :destroy]
+
   def index
     @orders = Order.all
   end
 
   def show
-    @order = Order.find(params[:id])
   end
 
   def create
@@ -13,12 +14,16 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    Order.destroy(params[:id])
+    @order.destroy
     redirect_to orders_url
   end
 
   private
     def order_params
       params.require(:order).permit(:name, :address)
+    end
+
+    def set_order
+      @order = Order.find(params[:id])
     end
 end
