@@ -5,5 +5,16 @@
   <dt><%= f.label :address, "住所" %></dt>
   <dd><%= f.text_field :address %></dd>
 </dl>
+
+<table>
+  <tr><td>商品<td>個数</tr>
+  <%= f.fields_for(:details) do |detail| %>
+  <tr>
+    <td><%= detail.text_field :product %></td>
+    <td><%= detail.text_field :quantity %></td>
+  </tr>
+  <% end %>
+</table>
+
 <%= f.submit %>
 <% end %>
