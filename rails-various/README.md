@@ -37,6 +37,17 @@ bin/rails generate controller orders index
 ```
 
 
+### データベース作成
+
+```
+bin/rake db:create
+```
+
+モデル作成
+
+```
+rails g model order name:string address:string
+```
 
 ## その他
 
