@@ -87,6 +87,28 @@ bin/rake db:migrate
 
 Gemfileに`devise`を追加して`bundle`
 
+
+ファイル作成
+
+```
+bin/rails g devise:install
+```
+
+メッセージに従い設定を行う。
+
+
+コントローラ作成
+
+```
+bin/rails g controller Home index show
+```
+
+モデル作成
+
+```
+bin/rails g devise User
+```
+
 ## その他
 
 ### コマンドいろいろ
