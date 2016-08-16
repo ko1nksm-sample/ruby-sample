@@ -83,6 +83,10 @@ bin/rake db:migrate
 ```
 
 
+### devise
+
+Gemfileに`devise`を追加して`bundle`
+
 ## その他
 
 ### コマンドいろいろ

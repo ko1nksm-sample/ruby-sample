@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: "home#index"
+
   scope "(:locale)" do
     #resources :orders
     get 'orders' => 'orders#index'

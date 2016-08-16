@@ -60,4 +60,6 @@ Rails.application.configure do
     Bullet.rails_logger = true # Railsのログに結果を出力
     Bullet.add_footer = true # ページの左下に結果を表示
   end
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
