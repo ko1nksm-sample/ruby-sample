@@ -6,9 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-order = Order.create(:name => 'name1', :address => 'address1')
-Detail.create(:order => order, :product => 'product1', :quantity => 1)
-Detail.create(:order => order, :product => 'product2', :quantity => 2)
-Detail.create(:order => order, :product => 'product3', :quantity => 3)
-Order.create(:name => 'name2', :address => 'address2')
-Order.create(:name => 'name3', :address => 'address3')
+Order.create(name: 'name1', address: 'address1', details_attributes: [
+  {product: 'product1', quantity: 1},
+])
+Order.create(name: 'name2', address: 'address2', details_attributes: [
+  {product: 'product1', quantity: 1},
+  {product: 'product2', quantity: 2},
+])
+Order.create(name: 'name3', address: 'address3', details_attributes: [
+  {product: 'product1', quantity: 1},
+  {product: 'product2', quantity: 2},
+  {product: 'product3', quantity: 3},
+])
