@@ -109,6 +109,12 @@ bin/rails g controller Home index show
 bin/rails g devise User
 ```
 
+マイグレート
+
+```
+bin/rake db:migrate
+```
+
 ## その他
 
 ### コマンドいろいろ
