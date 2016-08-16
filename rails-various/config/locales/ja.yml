@@ -1,6 +1,16 @@
 ---
 ja:
   activerecord:
+    models:
+      order: 注文
+      detail: 詳細
+    attributes:
+      order:
+        name: 名前
+        address: 住所
+      details:
+        product: 商品名
+        quantity: 個数
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
