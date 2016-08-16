@@ -47,6 +47,6 @@ class OrdersController < ApplicationController
     end
 
     def set_order
-      @order = Order.includes(:details).find(params[:id])
+      @order = Order.info(params[:id])
     end
 end

@@ -4,4 +4,6 @@ class Order < ApplicationRecord
 
   validates :name, presence: true
   validates :address, presence: true
+
+  scope :info, ->(id) { includes(:details).find(id) }
 end
