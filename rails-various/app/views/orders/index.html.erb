@@ -1,7 +1,13 @@
-<h1>注文一覧</h1>
+<h1><%= t '.order_list' %></h1>
 
 <table>
-  <tr><td>番号<td>名前<td>住所<td>商品数<td>操作</tr>
+  <tr>
+    <td><%= t 'view.number' %></td>
+    <td><%= Order.human_attribute_name :name %></td>
+    <td><%= Order.human_attribute_name :address %></td>
+    <td><%= Detail.human_attribute_name :quantity %></td>
+    <td><%= t 'view.action' %></td>
+  </tr>
   <% @orders.each do |order| %>
   <tr>
     <td><%= link_to order.id, order %></td>
@@ -9,11 +15,11 @@
     <td><%= order.address %></td>
     <td><%= order.details.length %></td>
     <td>
-      <%= link_to "編集", [:edit, order] %>
-      <%= link_to "削除", order, method: :delete, data: {confirm: "本当に削除しますか？"} %>
+      <%= link_to t('view.edit'), [:edit, order] %>
+      <%= link_to t('view.delete'), order, method: :delete, data: {confirm: I18n.t("view.delete?")} %>
     </td>
   </tr>
   <% end %>
 </table>
 
-<%= link_to '注文作成', new_order_path %>
+<%= link_to t('.new_order'), new_order_path %>

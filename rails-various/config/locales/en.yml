@@ -1,5 +1,15 @@
 ---
 en:
+  orders:
+    index:
+      order_list: Order list
+      new_order: New order
+  view:
+    number: Number
+    action: Action
+    edit: Edit
+    delete: Delete
+    delete?: Are you sure you want to delete?
   activerecord:
     errors:
       messages:
@@ -95,7 +105,7 @@ en:
         other: "%{count} months"
       x_years:
         one: 1 year
-        other: "%{count} years"  
+        other: "%{count} years"
       x_seconds:
         one: 1 second
         other: "%{count} seconds"

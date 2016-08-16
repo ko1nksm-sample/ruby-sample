@@ -1,16 +1,26 @@
 ---
 ja:
+  orders:
+    index:
+      order_list: 注文一覧
+      new_order: 注文作成
+  view:
+    number: 番号
+    action: 操作
+    edit: 編集
+    delete: 削除
+    delete?: 本当に削除しますか？
   activerecord:
     models:
       order: 注文
-      detail: 詳細
+      detail: 注文詳細
     attributes:
       order:
         name: 名前
         address: 住所
-      details:
+      detail:
         product: 商品名
-        quantity: 個数
+        quantity: 商品数
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
