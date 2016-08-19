@@ -2,6 +2,7 @@
 
 作りかけだったり不具合があったりするかもしれない。
 
+
 ## rails-scaffold
 
 scaffold生成コード
@@ -46,3 +47,11 @@ browserify-railsを使ってRailsとフロントエンドを連携させてい�
 eslintにも対応
 
 比較的良好に動いている。
+
+## おまけ
+
+httpサーバー起動
+
+```
+ruby -run -e httpd . -p 8000
+```
