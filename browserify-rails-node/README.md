@@ -134,7 +134,7 @@ browserifyやbabelの設定を変えた後は`bin/rake tmp:cache:clear`を行わ
 JavaScriptのテストはRailsとは完全に独立させる
 
 ```
-npm install --save-dev bebel-cli jasmine isparta
+npm install --save-dev babel-cli jasmine isparta
 ```
 
 jasmineの設定ファイル生成
@@ -219,4 +219,11 @@ package.jsonに以下を追加する
 npm run eslint
 npm run test
 npm run test-cov
+```
+
+#### plato
+
+
+```
+npm install plato --save-dev
 ```

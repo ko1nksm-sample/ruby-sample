@@ -10,11 +10,13 @@
     "browserify-incremental": "^3.1.1",
     "eslint": "^3.2.2",
     "isparta": "^4.0.0",
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.4.1",
+    "plato": "^1.7.0"
   },
   "scripts": {
     "eslint": "eslint app/assets/javascripts",
     "test": "babel-node $(npm bin)/jasmine",
-    "test-cov": "babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine/bin/jasmine.js"
+    "test-cov": "babel-node $(npm bin)/isparta cover --report text --report html node_modules/jasmine/bin/jasmine.js",
+    "metrics": "plato -r -d report app/assets/javascripts"
   }
 }
