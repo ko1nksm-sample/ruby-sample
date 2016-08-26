@@ -65,6 +65,52 @@ assets/javascripts/application.jsを修正して読み込みたいファイル�
 npm run で実行できるタスクはpackage.jsonを参照してください。
 
 
+## 処理の流れと依存関係
+
+### ビルド、開発用ウェブサーバー
+
+Railsの通常のやり方と同じで、`rails server` や `rake assets:precompile` を使用します。
+
+1. rails server実行 [設定ファイル: config/application.rb]
+  * browserify実行（-t babelify）
+2. browserify実行
+  * -t オプションにてbabel実行
+3. babel実行 [設定ファイル: .babelrc]
+  * ES6変換 (babel-preset-es2015)
+  * プロジェクトパス解決 (babel-plugin-resolver)
+
+### テスト、カバレッジ (npn run test, npm run test-cov)
+
+テストの場合は1を飛ばして「2. mocha実行」から開始
+
+1. nyc実行 [設定ファイル: package.json]
+2. mocha実行 [設定ファイル: mocha.opts]
+  * babel実行 (--compilers js:babel-core/register)
+  * instrument追加 (babel-plugin-istanbul)
+3. babel実行
+  * ビルド、開発用ウェブサーバー」の内容
+  * power-assert変換 (babel-preset-power-assert)
+  * instrumentコード埋め込み (babel-plugin-istanbul)
+
+### ブラウザテスト、カバレッジ (npm run karma)
+
+1. karma実行 [設定ファイル: karma.conf.js]
+  * browserify実行 (karma-browserify)
+  * babel実行 (babelify)
+  * PhantomJS実行（karma-phantomjs-launcher）
+  * mocha実行 (karma-mocha)
+  * カバレッッジ実行 (karma-coverage)
+
+### 構文チェック (npm run lint)
+
+1. eslint実行 [設定ファイル: .eslintrc.yaml]
+  * nodeモジュールのパス解決 (eslint-import-resolver-node)
+
+### メトリクス (npm run metrics)
+
+1. plato実行 (特に依存するものはない)
+
+
 ## 注意点
 
 browserifyやbabelの設定を変えた後は`bin/rake tmp:cache:clear`を行わないとキャッシュが使われることがあります。
