@@ -37,10 +37,11 @@ Rails標準のアセットパイプラインの仕組みに乗っかったやり
 gem "browserify-rails"
 ```
 
-config/application.rbに以下を追加します。
+config/application.rbに以下を追加します。（下の行はsource mapが必要な場合）
 
 ```
 config.browserify_rails.commandline_options = '-t babelify'
+config.browserify_rails.source_map_environments << "development"
 ```
 
 assets/javascripts/application.jsを修正して読み込みたいファイルのみを記述します。
