@@ -21,3 +21,13 @@
 .byebug_history
 
 /vendor/bundle
+/bower_components
+/node_modules
+/.nyc_output
+/coverage
+/report
+npm-debug.log
+/dist
+
+/public/assets
+
