@@ -1,12 +1,13 @@
-# browserify-railsを使ったRailsとJavaScriptの連携（2016年8月版）
+# browserify-rails(+babel)を使ったRailsとJavaScriptの連携（2016年8月版）
 
-browserify-railsを使ったRailsとJavaScriptの連携方法です。
+browserify-rails(+babel)を使ったRailsとJavaScriptの連携方法です。
 またJavaScript側は開発で必要となるものを揃えています。
 
 Rails標準のアセットパイプラインの仕組みに乗っかったやり方で、
 フロントエンド（JavaScript）側のコードがそれほど多くない場合を想定しています。
 
-フロントエンド側のコードが多い場合はwebpackを使って連携させた方が良いでしょう。
+フロントエンド側のコードが多い場合はビルドに時間がかかるようなので
+webpackを使って連携させた方が良いでしょう。
 
 ## 構成
 
@@ -29,9 +30,14 @@ Rails標準のアセットパイプラインの仕組みに乗っかったやり
 おまけ MacOSX上のatomでlinter-eslintプラグインが正常に動作することを確認済み
 
 
+## 既存のRailsプロジェクトに組み込む方法
+
+以下の設定ファイル（Rails）を行って、設定ファイル（JavaScript）のファイルをコピーして
+npm installを行えば動くのではないかと・・・
+
 ## 設定ファイル（Rails）
 
-標準のRailsのGemfileに以下の行を追加します。
+標準のRailsのGemfileに以下の行を追加してbundle installします。
 
 ```
 gem "browserify-rails"
@@ -60,11 +66,11 @@ assets/javascripts/application.jsを修正して読み込みたいファイル�
 | .babelrc       | babelによるES2015対応 ＋ power-assert、istanbul用のコード変換 |
 | .eslintignore  | Railsが生成したファイルなどeslintで無視するファイルを記述     |
 | .eslintrc.yaml | eslint用設定                                                  |
+| karma.conf.js  | karma用設定                                                   |
 | mocha.opts     | テスト用設定                                                  |
 | package.json   | パッケージ管理、タスク定義、nyc設定                           |
 
 npm run で実行できるタスクはpackage.jsonを参照してください。
-
 
 ## 処理の流れと依存関係
 
