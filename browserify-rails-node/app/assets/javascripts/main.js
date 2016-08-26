@@ -1,7 +1,9 @@
 import hello from "hello";
 
-const func = () => {
-    console.log("main: " + hello());
+const say = () => {
+  $(document.body).append(hello('world'));
 };
 
-func();
+$(function() {
+  say();
+})

@@ -25,3 +25,5 @@
 /public/assets
 /coverage
 /report
+/.nyc_output
+npm-debug.log

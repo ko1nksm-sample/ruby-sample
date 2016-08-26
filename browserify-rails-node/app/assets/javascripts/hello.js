@@ -1,3 +1,7 @@
-export default function hello() {
-    return "hello";
+export default function hello(name) {
+  return "Hello " + name;
+}
+
+export function dummy() {
+  return
 }
