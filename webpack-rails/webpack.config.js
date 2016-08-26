@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const AssetsPlugin = require('assets-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -22,7 +23,7 @@ module.exports = {
     ),
 
     // css-loader, sass-loaderで処理したCSSを単体のファイルとして生成するために必要
-    new ExtractTextPlugin("[name].css"),
+    new ExtractTextPlugin("[name]-[hash].css"),
 
     // externalsにしたファイルを手動でコピーする（CDN等を使う場合は不要）
     new CopyWebpackPlugin([
@@ -37,6 +38,8 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       minimize: true, compress: { warnings: false }
     }),
+
+    new AssetsPlugin()
   ],
   module: {
     loaders: [
@@ -79,6 +82,6 @@ module.exports = {
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'public/assets'),
-    filename: '[name].js'
+    filename: '[name]-[hash].js'
   },
 }
