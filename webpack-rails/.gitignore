@@ -27,8 +27,6 @@
 /coverage
 /report
 npm-debug.log
-/dist
-
 /public/assets
 /webpack-assets.json
 

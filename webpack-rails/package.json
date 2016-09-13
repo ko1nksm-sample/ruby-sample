@@ -37,6 +37,7 @@
     "power-assert": "^1.4.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
+    "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2"
@@ -50,7 +51,10 @@
     "test-cov": "cross-env NODE_ENV=test nyc mocha --opts ./mocha.opts",
     "karma": "cross-env NODE_ENV=test karma start",
     "lint": "cross-env DEBUG=eslint:cli-engine eslint src",
-    "metrics": "plato -r -d report frontend/src"
+    "metrics": "plato -r -d report frontend/src",
+    "clean": "rimraf .nyc_output public/assets coverage report",
+    "cleanall": "rimraf node_modules bower_components",
+    "precleanall": "npm run clean"
   },
   "nyc": {
     "//": "babel-plugin-istanbulでinstrumentを埋め込むのでnyc側は無効にする",
