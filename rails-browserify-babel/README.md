@@ -1,4 +1,4 @@
-# browserify-rails(+babel)を使ったRailsとJavaScriptの連携（2016年8月版）
+# browserify-rails(+babel)を使ったRailsとJavaScriptの連携
 
 browserify-rails(+babel)を使ったRailsとJavaScriptの連携方法です。
 またJavaScript側は開発で必要となるものを揃えています。
