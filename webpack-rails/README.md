@@ -1,1 +1,2 @@
-# Railsとwebpackの連携（2016年8月版）
+Move to https://github.com/ko1nksm/rails-webpack-babel-sample
+
